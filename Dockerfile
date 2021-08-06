@@ -8,6 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . /code/
 
-USER root
-
 CMD ["/bin/bash", "server.sh"]
