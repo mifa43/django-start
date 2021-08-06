@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import sys
+path_to_viwes = sys.path.insert(1, "/home/milos/Desktop/django/django-start/django_exemple/views.py")
+from django_exemple import views
 
 urlpatterns = [
+    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
 ]
 
