@@ -18,7 +18,7 @@ from django.urls import path
 from django_exemple import views
 
 urlpatterns = [
-    path('<int:id>', views.index, name='index'),
+    path('<str:name>', views.index, name='index'),
     path('admin/', admin.site.urls),
 ]
 
