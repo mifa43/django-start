@@ -18,9 +18,11 @@ from django.urls import path
 from django_exemple import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('<str:name>', views.index, name='index'),
     path('admin/', admin.site.urls),
+    path('<int:id>', views.index, name='index'),
+    path('', views.home, name='home'),
+    path('create/', views.create, name='create'),
 ]
+
 # admin panel
 # create admin with python3 manage.py createsuperuser in docker container
