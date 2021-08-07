@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import TodoList, Item
-
+from .forms import CreateNewList
 # Create your views here.
 def index(request, id):
     #region how to use this ?
@@ -15,7 +15,8 @@ def home(request):
     return render(request, 'main/home.html', {})
 
 def create(request):
-    return render(request, 'main/create.html', {})
+    form = CreateNewList()
+    return render(request, 'main/create.html', {"form": form})
 # enter to docker container with: docker exec -it DjangoProject /bin/bash
 # hit command: python3 manage.py startapp django_exemple
 # problem with privileges: sudo chown -c -R $USER:$USER (folder name)
