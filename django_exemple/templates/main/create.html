@@ -6,7 +6,8 @@ Create
 {% block content %}
     <h1>Create page</h1>
     <form method="POST", action="/create/">
-    {{ form }}
+        {% csrf_token %}
+    {{ form.as_p }}
     <button type="submit", name="create">Create new</button>
     </form>
 {% endblock %}
