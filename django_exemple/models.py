@@ -14,7 +14,7 @@ class Item(models.Model):
     complete = models.BooleanField()
     def __str__(self):
         return self.text
-
+#region commits
 #1. go to settings and add 'django_exemple.apps.DjangoExempleConfig' -/- dir_name.apps.class_name
 #2. docker exec -it DjangoProject /bin/bash -/- python3 manage.py migrate
 #3. create model in models.py after that do python3 manage.py makemigrations
@@ -38,3 +38,10 @@ class Item(models.Model):
 # dell = t.get(id=1)
 # dell.delete()
 # returns (1, {'django_exemple.TodoList': 1})
+#get item_set
+# >>> ls = TodoList.objects.get(id=2)
+# >>> ls
+# <TodoList: Barbari>
+# >>> ls.item_set.all()
+# <QuerySet [<Item: Hello world from docker-container!>]>
+#endregion
