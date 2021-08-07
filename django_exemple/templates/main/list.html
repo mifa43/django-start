@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %} 
+{% block title %}
+List views
+{% endblock %}
+{% block content %}
+    <h1>{{l.name}}</h1>
+    <ul>
+        {% for item in l.item_set.all %}
+            {% if item.complete == False %}
+                <li>{{item.text}} - uncomplite</li>
+            {% else %} 
+                <li>{{item.text}} - complete</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}
