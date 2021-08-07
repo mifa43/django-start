@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from .models import TodoList, Item
 
 # Create your views here.
-
+def home(request):
+    pass
 def index(request, name):
     #region how to use this ?
     #http://localhost:8001/<someName>   In order to do a search in the database, 
