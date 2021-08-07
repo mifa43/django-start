@@ -32,3 +32,9 @@ class Item(models.Model):
 #       TodoList.objects.all() - select * from TodoList;
 #       TodoList.objects.get(id=1) - select * from TodoList where id = 1;
 # t.item_set.create(text="Hello world from docker-container!", complete=False) - way of writing values into a relation
+
+#t.filter(name__startswith="Olivija") - filter comand
+# delete method
+# dell = t.get(id=1)
+# dell.delete()
+# returns (1, {'django_exemple.TodoList': 1})
