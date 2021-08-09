@@ -15,22 +15,25 @@ def index(response, id):
     # if the check box is pressed the value in the database will be saved after pressing the save button and the value in the database will be upgraded,
     # if we enter a value in the text input field and press the add new item button the complete value is False by default and both values are added to the database
     #endregion
-    if response.method == 'POST':
-        print(response.POST)
-        if response.POST.get("save"):
-            for item in l.item_set.all():
-                if response.POST.get("c" + str(item.id)) == "clicked":
-                    item.complete = True
+    if l in response.user.TodoList.all():   #this condition checks whether the user under that id belongs to that list
+
+        if response.method == 'POST':
+            print(response.POST)
+            if response.POST.get("save"):
+                for item in l.item_set.all():
+                    if response.POST.get("c" + str(item.id)) == "clicked":
+                        item.complete = True
+                    else:
+                        item.complete = False
+                    item.save()
+            elif response.POST.get("newItem"):
+                txt = response.POST.get("new")
+                if len(txt) > 2:
+                    l.item_set.create(text=txt, complete=False) #default value is False
                 else:
-                    item.complete = False
-                item.save()
-        elif response.POST.get("newItem"):
-            txt = response.POST.get("new")
-            if len(txt) > 2:
-                l.item_set.create(text=txt, complete=False) #default value is False
-            else:
-                print("invalid actions!")
-    return render(response, 'main/list.html', {"l": l})
+                    print("invalid actions!")
+        return render(response, 'main/list.html', {"l": l})
+    return render(response, 'main/view.html', {})   #if we try to access the list under some other id and we are not logged in we do a redirection to the list that belongs to that user
     
 def home(response):
     return render(response, 'main/home.html', {})
@@ -42,6 +45,8 @@ def create(response):
             n = form.cleaned_data['name'] # delete data from inputs
             t = TodoList(name = n)  # adding items to db
             t.save()
+            response.user.TodoList.add(t)
+            
         return HttpResponseRedirect("/%i" %t.id) #pass id and redirect to index
     else: # GET method
         form = CreateNewList()
@@ -49,3 +54,5 @@ def create(response):
 # enter to docker container with: docker exec -it DjangoProject /bin/bash
 # hit command: python3 manage.py startapp django_exemple
 # problem with privileges: sudo chown -c -R $USER:$USER (folder name)
+def view(response):
+    return render(response, "main/view.html", {})
