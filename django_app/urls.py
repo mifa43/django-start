@@ -24,6 +24,5 @@ urlpatterns = [
     path('create/', views.create, name='create'),
     path('register/', vim.register, name='register'),
 ]
-
 # admin panel
 # create admin with python3 manage.py createsuperuser in docker container
