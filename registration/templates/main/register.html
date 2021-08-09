@@ -3,7 +3,7 @@
 {% block title %} Create an accaunt {% endblock %}
 {% load crispy_forms_tags %}
 <!-- calling  crispy from django and add to form -->
-{% block content %}
+{% block register %}
     <form method="POST", class="input-group">
         {{ form|crispy }}
         {% csrf_token %}
