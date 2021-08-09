@@ -20,7 +20,7 @@ from registration import views as vim
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('<int:id>', views.index, name='index'),
-    path('', views.home, name='home'),
+    path('home/', views.home, name='home'),
     path('create/', views.create, name='create'),
     path('register/', vim.register, name='register'),
 ]
