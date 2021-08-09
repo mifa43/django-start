@@ -24,6 +24,7 @@ urlpatterns = [
     path('create/', views.create, name='create'),
     path('register/', vim.register, name='register'),
     path("", include("django.contrib.auth.urls")),
+    path('view/', views.view, name='view'),
 ]
 # admin panel
 # create admin with python3 manage.py createsuperuser in docker container
