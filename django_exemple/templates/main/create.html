@@ -4,10 +4,14 @@
 Create
 {% endblock %}
 {% block content %}
-    <h1>Create page</h1>
-    <form method="POST", action="/create/">
+    <h3>Create page</h3>
+    <form method="POST", action="/create/",class="form-group">
         {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit", name="create">Create new</button>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="submit", name="create", class="btn btn-success">Create new</button>
+            </div>
+            {{ form.name }}
+        </div>
     </form>
 {% endblock %}
