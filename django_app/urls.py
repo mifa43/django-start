@@ -16,9 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django_exemple import views
-
+from registration import views as vim
 urlpatterns = [
-    path('<str:name>', views.index, name='index'),
     path('admin/', admin.site.urls),
+    path('<int:id>', views.index, name='index'),
+    path('home/', views.home, name='home'),
+    path('create/', views.create, name='create'),
+    path('register/', vim.register, name='register'),
 ]
 
+# admin panel
+# create admin with python3 manage.py createsuperuser in docker container
