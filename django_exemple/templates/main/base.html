@@ -51,6 +51,7 @@
 
                     {% if user.is_authenticated %}  
                     <!-- checking if the user exists if he does not exist we require him to log in and if he does not have an account we offer to register -->
+                        <p>Logout <a href="/logout">here</a></p>
                         {% block content %}
                         {% endblock %}
                     {% else %}
