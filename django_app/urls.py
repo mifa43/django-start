@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django_exemple import views
 from registration import views as vim
 urlpatterns = [
@@ -23,7 +23,8 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('create/', views.create, name='create'),
     path('register/', vim.register, name='register'),
+    path("", include("django.contrib.auth.urls")),
+    path('view/', views.view, name='view'),
 ]
-
 # admin panel
 # create admin with python3 manage.py createsuperuser in docker container
