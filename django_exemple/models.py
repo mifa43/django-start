@@ -1,7 +1,8 @@
 from django.db import models
-
+from django.contrib.auth.forms import User
 # Create your models here.
 class TodoList(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='TodoList', null=True)
     name = models.CharField(max_length = 30)
 
 
