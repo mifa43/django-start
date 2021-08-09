@@ -5,6 +5,7 @@
 {% block content %}
     <form method="POST", class="input-group">
         {{form}}
+        {% csrf_token %}
         <button type="submit", class="btn btn-success">Register</button>
     </form>
 {% endblock %}
