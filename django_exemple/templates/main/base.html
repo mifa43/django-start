@@ -40,14 +40,30 @@
             <a href="/create">Create</a>
             <a href="/2">Views</a>
             <a href="/register">Registration</a>
+            <a href="/login">Login</a>
         </div>
         <div id="content", name="content", class="main">
             <div class="row justify-content-center">
                 <div class="col-8">
                     <h1 class="mt-2">My webapp</h1>
                     <hr class="mt-0 mb-4">
-                    {% block content %}
+                    
+
+                    {% if user.is_authenticated %}  
+                    <!-- checking if the user exists if he does not exist we require him to log in and if he does not have an account we offer to register -->
+                        {% block content %}
+                        {% endblock %}
+                    {% else %}
+                        <p>Login <a href="/login">here</a></p>
+                    {% endif %}
+                    
+
+                    {% block register %}
                     {% endblock %}
+                    <!-- only registration and login for non-registered users is allowed -->
+                    {% block login_required %}
+                    {% endblock %}
+                    
                 </div>
             </div>
 
