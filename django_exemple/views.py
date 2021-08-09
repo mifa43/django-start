@@ -27,13 +27,11 @@ def index(response, id):
         elif response.POST.get("newItem"):
             txt = response.POST.get("new")
             if len(txt) > 2:
-                l.item_set.create(text=txt, complete=False)
+                l.item_set.create(text=txt, complete=False) #default value is False
             else:
                 print("invalid actions!")
-
-
-
     return render(response, 'main/list.html', {"l": l})
+    
 def home(response):
     return render(response, 'main/home.html', {})
 

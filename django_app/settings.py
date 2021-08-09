@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
+    'crispy_forms',     # these are my apps that need to be installed
     'django_exemple.apps.DjangoExempleConfig',
     'registration.apps.RegistrationConfig',
 ]
